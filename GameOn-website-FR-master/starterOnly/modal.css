@@ -525,15 +525,24 @@ footer {
   font-size: 17px; 
 }
 
-
-/* Ajoutez ce style pour le message de remerciement */
-#messageRemerciement {
+.merci {
+  text-align: center;
   display: none;
-  color: green;
+  background-color: #232323;
+  padding:20px; 
+  box-sizing: border-box; 
 }
 
+.div_merci{
+   height: 500px;
+   box-sizing: border-box; 
+   display: flex;
+   
+   align-items: end;
+   justify-content: center;
+  }
 
-
+  
 @keyframes modalopen {
   from {
     opacity: 0;

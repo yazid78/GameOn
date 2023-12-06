@@ -14,6 +14,8 @@ const formData = document.querySelectorAll(".formData");
 const croix = document.querySelector(".close");
 const parti = document.querySelector(".btn-submit");
 const modalbody = document.querySelector(".modal-body");
+const btnFermer = document.getElementById("fermer");
+const merci = document.querySelector(".merci");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -24,55 +26,56 @@ function launchModal() {
 
 //Fermer le modale
 croix.addEventListener("click", fermer);
-
 function fermer() {
   modalbg.style.display = "none";
+  reserve.style.display = "block";
+  merci.style.display = "none";
 }
 
 //Valider le formulaire
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.myform .btn-submit').addEventListener('click', function(e) {
-    e.preventDefault();
+let myform = document.querySelector(".myform");
 
-    let prenom = document.querySelector(".text-control");
-    let prenomVide = document.getElementById("prenomVide");
-    let prenomFormat = document.getElementById("prenomFormat");
-    let prenomLongueur = document.getElementById("prenomLongueur");
-    let myregex = /^[a-zA-Z-\s]+$/;
+  myform.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    prenomVide.style.display = 'none';
-    prenomFormat.style.display = 'none';
-    prenomLongueur.style.display = 'none';
+      let prenom = document.querySelector(".text-control");
+      let prenomVide = document.getElementById("prenomVide");
+      let prenomFormat = document.getElementById("prenomFormat");
+      let prenomLongueur = document.getElementById("prenomLongueur");
+      let myregex = /^[a-zA-Z-\s]+$/;
 
-    if (prenom.value.trim() === "") {
-      prenomVide.style.display = 'block'; 
-    } else if (!myregex.test(prenom.value)) {
-      prenomFormat.style.display = 'block'; 
-    } else if (prenom.value.length < 2) {
-      prenomLongueur.style.display = 'block'; 
-    } else {
-      alert("Formulaire soumis avec succès!");
-      // Cacher formulaire
-   
+      prenomVide.style.display = "none";
+      prenomFormat.style.display = "none";
+      prenomLongueur.style.display = "none";
 
+      if (prenom.value.trim() === "") {
+        prenomVide.style.display = "block";
+      } else if (!myregex.test(prenom.value)) {
+        prenomFormat.style.display = "block";
+      } else if (prenom.value.length < 2) {
+        prenomLongueur.style.display = "block";
+      } else {
+        reserve.style.display = "none";
 
       
-      // Si vous souhaitez soumettre le formulaire après validation, décommentez la ligne suivante.
-      // document.querySelector('.myform').submit();
-    }
-  });
+
+
+
+
+        
+        merci.style.display = "block";
+        btnFermer.addEventListener("click", fermer);
+        croix.addEventListener("click", fermer);
+      }
+ 
 });
-  
-      
-//Cacher formulaire
-parti.forEach((btn) => btn.addEventListener("click", hideform));
 
-function hideform() {
-  formData.style.display = "none";
-}
+
+  
+  
 // Décocher Radio
-croix.addEventListener("click", function() {
+croix.addEventListener("click", function () {
   let radio = document.querySelectorAll("input[type='radio']");
   console.log(radio);
-  radio.forEach( btn=> btn.checked = false);
+  radio.forEach((btn) => (btn.checked = false));
 });
