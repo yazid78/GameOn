@@ -78,12 +78,15 @@
               <div
                 class="formData">
                 <label for="last">Nom</label><br>
-                <input
+                <input 
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
                 /><br>
+                <span class="message" id="nomVide">Le champ Nom ne peut pas être vide.</span>
+                <span class="message" id="nomFormat">Le champ nom ne doit contenir que des lettres, des espaces ou des tirets.</span>
+                <span class="message" id="nomLongueur">Le champ nom doit avoir au moins 2 caractères.</span>
               </div>
               <div
                 class="formData">
@@ -93,8 +96,9 @@
                   type="email"
                   id="email"
                   name="email"
-                 
                 /><br>
+                <span class="message" id="emailVide">Veuillez entrer une adresse mail valide.</span>
+                <span class="message" id="emailFormat">Veuillez entrer une adresse mail valide.</span>
               </div>
               <div
                 class="formData">
@@ -104,15 +108,18 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  
                 /><br>
+                <span class="message" id="dateVide">Veuillez entrer une Date valide.</span>
+                <span class="message" id="dateFormat">Veuillez entrer une Date valide.</span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-            
+                <input type="number" class="text-control" id="quantity" name="quantity" >
               </div>
+              <span class="message" id="tounoisVide">Veuillez entrer une chiffre.</span>
+              <span class="message" id="tournoisFormat">Veuillez entrer un chiffre entre 0 et 99.</span>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData">
@@ -184,6 +191,8 @@
                   Portland</label
                 >
               </div>
+              <span class="message" id="checkboxVide">Veuillez cocher un tournois.</span>
+
 
               <div
                 class="formData">
@@ -193,10 +202,11 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <span class="message conditionVide">Vous devez vérifier que vous acceptez les termes et conditions.</span>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -213,11 +223,10 @@
               />
             </form>
 
-            <div class="div_merci">
             <span class="merci" > <p>Merci pour votre inscription</p>
                 <button class="btn-submit" id="fermer"> Fermer </button>
             </span>
-          </div>
+         
 
           </div>
         </div>
