@@ -103,22 +103,38 @@ myform.addEventListener('submit', (e) => {
   }
   
   // Validation pour le champ "Date de naissance"
-  let date = document.querySelector(".text-control#birthdate");
-  let dateVide = document.getElementById("dateVide");
-  let dateFormat = document.getElementById("dateFormat");
-  let myregexdate = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
+let date = document.querySelector(".text-control#birthdate");
+let dateVide = document.getElementById("dateVide");
+let dateFormat = document.getElementById("dateFormat");
+let ageRestriction = document.getElementById("ageRestriction");
+let myregexdate = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
+
+dateVide.style.display = "none";
+dateFormat.style.display = "none";
+ageRestriction.style.display = "none";
 
 
-  dateVide.style.display = "none";
-  dateFormat.style.display = "none";
-  
-  if (date.value.trim() === "") {
-    dateVide.style.display = "block";
-    Valide = false;
-  } else if (!myregexdate.test(date.value)) {
-    dateFormat.style.display = "block";
+if (date.value.trim() === "") {
+  dateVide.style.display = "block";
+  Valide = false;
+} else if (!myregexdate.test(date.value)) {
+  dateFormat.style.display = "block";
+  Valide = false;
+} else {
+  // Vérifier l'âge
+  let enteredDate = new Date(date.value);
+  let currentDate = new Date();
+  let age = currentDate.getFullYear() - enteredDate.getFullYear();
+
+
+  // Vérifier si l'utilisateur a moins de 18 ans
+  if (age < 18) {
+    ageRestriction.style.display = "block";
     Valide = false;
   }
+}
+
+
 
   // Validation pour le champ "tournoi GameOn"
   let quantity = document.querySelector(".text-control#quantity");
