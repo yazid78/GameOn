@@ -25,7 +25,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//Fermer le modale
+//Fermer le modal
 croix.addEventListener("click", fermer);
 function fermer() {
   modalbg.style.display = "none";
